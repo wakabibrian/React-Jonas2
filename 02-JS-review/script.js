@@ -142,3 +142,28 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+//=========== Destructuring for objects
+const book = getBook(2);
+// const title = book.title;
+// const author = book.author;
+
+const { title, author, pages, publicationDate, genres } = book; //Same name as the properties in the object
+
+// console.log(title, author);
+
+//========== Destructing for arrays
+// const primaryGenre = genres[0];
+// const secondaryGenre = genres[1];
+
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres; //Named according to order of the array
+
+const newGenres = [...genres, "epic movies"];
+// console.log(newGenres);
+
+const updatedBook = { ...book, moviePublicationDate: "2001-9-19", pages: 1210 }; // adds moviePublicationDate property and overrides the pages property
+// console.log(updatedBook);
+
+// Template literal
+const summary = `${title}  is a book`;
+console.log(summary);
