@@ -143,6 +143,7 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 //=========== Destructuring for objects
 const book = getBook(3);
 // const title = book.title;
@@ -200,3 +201,74 @@ function getTotalReviewCount(book) {
 }
 
 console.log(getTotalReviewCount(book));
+*/
+
+/*
+const books = getBooks();
+
+// const newArray = [1, 2, 3, 4].map((el) => el * 2);
+// console.log(newArray);
+
+const titles = books.map((book) => book.title);
+
+const essentialDetails = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+}));
+
+const longBooks = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+
+const adventureBooks = books
+  .filter((books) => books.genres.includes("adventure"))
+  .map((books) => books.title);
+
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+
+const arr = [2, 5, 3, 6, 7, 4, 9];
+const sorted = arr.slice().sort((a, b) => a - b);
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
+
+// Working With Immutable Arrays
+// 1) Add book object to an array
+const newBook = {
+  id: 6,
+  title: "Harry Potter",
+  author: "J. K. Rowling",
+};
+
+const booksAfterAdd = [...books, newBook];
+
+// 2) Delete book object from an array
+// Delete book with id 3
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+
+// 3) Update a Book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id == 1 ? { ...book, pages: 1210 } : book
+);
+*/
+
+// Asynchronous JavaScript: Promises
+
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+// //then method will be called as soon as the promise is fullfilled
+
+// console.log("Wakabi"); //Printed first
+
+// Async Await
+// Javascript waits
+async function getToDos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  console.log(data);
+}
+
+getToDos();
+
+console.log("Wakabi"); //Executed first
