@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 //=========== Destructuring for objects
-const book = getBook(2);
+const book = getBook(3);
 // const title = book.title;
 // const author = book.author;
 
@@ -164,6 +164,39 @@ const newGenres = [...genres, "epic movies"];
 const updatedBook = { ...book, moviePublicationDate: "2001-9-19", pages: 1210 }; // adds moviePublicationDate property and overrides the pages property
 // console.log(updatedBook);
 
+//Arrow functions
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
 // Template literal
-const summary = `${title}  is a book`;
+const summary = `${title}  is a book, year ${getYear(publicationDate)}`;
 console.log(summary);
+
+// Ternary operator.
+test = pages > 1000 ? "Over a thousand" : "less than a thousand";
+console.log(test);
+
+//  Short-Circuiting And Logical Operators: &&, ||, ??
+// && operator
+console.log(true && "Some string"); // no short-circuit
+console.log(false && "Some string"); // short-circuit, returns false
+
+// falsy: 0, '', null, undefined
+console.log("Wakabi" && "Some string");
+
+// default values
+const spanishTransilation = book.translations.spanish || "Not Translated";
+console.log(spanishTransilation);
+
+// Nullish coalescing operator
+// const counting = book.reviews.librarything.reviewsCount ?? "no data";
+// console.log(counting);
+
+// Optional Chaining
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews.goodreads.reviewsCount;
+  const librarything = book.reviews.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
